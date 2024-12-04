@@ -1,9 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "../component/Sidebar";
+import Sidebar from "../components/Sidebar";
 const System = () => {
   return (
-    <div className="flex flex-row flex-1">
+    <div className="flex flex-row h-screen bg-red-900">
       <Sidebar />
       <div className="flex-1">
         <Outlet />

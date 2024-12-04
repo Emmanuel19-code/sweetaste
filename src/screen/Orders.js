@@ -1,30 +1,49 @@
-import React from "react";
-
+import React, { useState } from "react";
+import Order from "../components/Order";
+import "../customstyles/scrollbar.css";
+import Payment from "../components/Payment";
 const Orders = () => {
+  const [display, setDisplay] = useState("All");
+  const [showPayment,setShowPayment] = useState(false)
   return (
-    <div className="bg-gray-100 h-screen">
-      <div>
+    <div className="bg-gray-100 h-screen overflow-y-auto custom-scroll">
+      <div className="sticky top-0  bg-gray-100">
         <div className="flex flex-row items-center p-3 justify-between">
           <h4 className="text-xl font-semibold ">Orders</h4>
           <p>Wednesday, 03 December 2023</p>
         </div>
         <div className="flex flex-row justify-between items-center">
           <div className="p-3 flex flex-row items-center">
-            <div className="m-1 w-8 bg-white p-1 rounded">
-              <h4 className="text-center">All</h4>
+            <div
+              className={`m-1 p-1 w-10 ${
+                display === "All" ? "bg-teal-800 text-white" : "bg-white"
+              } rounded-md`}
+              onClick={() => setDisplay("All")}
+            >
+              <h4 className="text-center font-roboto text-sm">All</h4>
             </div>
-            <div className="m-1 p-1 w-24 bg-white rounded-lg">
-              <h4 className="text-center">On Process</h4>
+            <div
+              className={`m-1 p-1 w-24 text-sm ${
+                display === "OnProcess" ? "bg-teal-800 text-white" : "bg-white"
+              } rounded-md`}
+              onClick={() => setDisplay("OnProcess")}
+            >
+              <h4 className="text-center font-roboto text-sm">On Process</h4>
             </div>
-            <div className="m-1 p-1 w-24 bg-white rounded-lg">
-              <h4 className="text-center">Completed</h4>
+            <div
+              className={`m-1 p-1 w-24 text-xs ${
+                display === "Completed" ? "bg-teal-800 text-white" : "bg-white"
+              } rounded-md`}
+              onClick={() => setDisplay("Completed")}
+            >
+              <h4 className="text-center text-sm font-roboto">Completed</h4>
             </div>
           </div>
           <div className="flex flex-row items-center">
             <div className="bg-white w-10 p-1.5 rounded-lg">
               <img src=" images/filter.png" alt="" className="w-6 h-6" />
             </div>
-            <div class="flex flex-row items-center w-72 bg-gray-50 m-2 rounded-lg">
+            <div class="flex flex-row px-1 items-center w-72 bg-gray-50 m-2 rounded-lg">
               <input
                 type="search"
                 id="search-dropdown"
@@ -53,6 +72,37 @@ const Orders = () => {
           </div>
         </div>
       </div>
+      {/*Displaying Screen */}
+      {display === "All" ? (
+        <div></div>
+      ) : display === "OnProcess" ? (
+        <div className="p-2 flex  flex-wrap">
+          {/*Orders */}
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+          <Order setShowPayment={setShowPayment}/>
+        </div>
+      ) : (
+        <div>
+          <h4>hello</h4>
+        </div>
+      )}
+      {
+        showPayment && <Payment setShowPayment={setShowPayment}/>
+      }
       
     </div>
   );
