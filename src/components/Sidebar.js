@@ -15,11 +15,13 @@ const Sidebar = () => {
                 <h4 className="ml-2 ">Dashboard</h4>
             </div>
           </NavLink>
-            
-            <div className="flex flex-row items-center m-2">
+          <NavLink to={"menu"} className={({isActive})=> isActive && 'bg-yellow-300 rounded-xl text-green-800 font-bold'}>
+          <div className="flex flex-row items-center m-2">
                 <img src="images/new_menu.png" alt="dashboard" className="w-6 h-6"/>
                 <h4 className="ml-2 ">Menu</h4>
             </div>
+              </NavLink>
+            
             <NavLink to={"/orders"} className={({isActive})=>isActive && 'bg-yellow-300 rounded-xl text-green-800 font-bold'}>
             <div className="flex flex-row items-center  p-1 m-2">
                 <img src="images/order.png" alt="dashboard" className="w-6 h-6"/>
