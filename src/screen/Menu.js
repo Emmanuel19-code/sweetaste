@@ -1,31 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "../customstyles/scrollbar.css";
 import MenuOrder from "../components/MenuOrder";
-import FoodMenu from "../components/Menu";
+import FoodMenu from "../components/FoodMenu";
+import MenuDish from "../components/MenuDish";
+import { foodTypes } from "../data/foodTypes";
+import { Link } from "react-router-dom";
+import { foods } from "../data/dishes";
+
 const Menu = () => {
+  const [selected, setSelected] = useState("All Menu");  
   return (
     <div className="bg-gray-100 flex flex-row h-screen">
       <div className="flex-1 flex flex-col p-2">
         {/*menu display */}
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center">
-            <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center">
-              <img src="images/arrowBack.png" alt="" className="w-4" />
-            </div>
+            <Link to={"/dashboard"}>
+              <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center">
+                <img src="images/arrowBack.png" alt="" className="w-4" />
+              </div>
+            </Link>
 
             <h4 className="font-medium text-lg ml-2">Choose Menu</h4>
           </div>
-          <div class="flex flex-row px-1 items-center w-72 bg-gray-50 m-2 rounded-lg">
+          <div className="flex flex-row px-1 items-center w-72 bg-gray-50 m-2 rounded-lg">
             <input
               type="search"
-              id="search-dropdown"
-              className="block p-2 w-full z-20 text-sm text-gray-900 rounded-lg bg-gray-50 "
+              className="block p-2 w-full z-20 text-sm outline-none text-gray-900 rounded-lg bg-gray-50 "
               placeholder="Search a name,order,or etc..."
               required
             />
 
             <svg
-              class="w-4 h-4"
+              className="w-4 h-4"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -33,41 +40,38 @@ const Menu = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
               />
             </svg>
-            <span class="sr-only">Search</span>
           </div>
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row  ">
           <div
-            className="custom-scroll   overflow-y-scroll"
+            className="custom-scroll overflow-y-scroll scroll-smooth"
             style={{ maxHeight: "calc(100vh - 60px)" }}
           >
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
-            <FoodMenu />
+            {foodTypes.map((type) => (
+              <FoodMenu
+                type={type.category}
+                key={type.id}
+                id={type.id}
+                selected={selected}
+                setSelected={setSelected}
+              />
+            ))}
           </div>
-          <div>
-            
+          <div
+            className="ml-4 flex flex-wrap flex-1 custom-scroll overflow-y-scroll"
+            style={{ maxHeight: "calc(100vh - 60px)" }}
+          >
+            {
+              foods.map((food)=>(
+                <MenuDish dish={food?.dish} description={food?.description} tags={food?.tags} discount={food?.discountpercentage} price={food?.price}/>
+              ))
+            }
           </div>
         </div>
       </div>

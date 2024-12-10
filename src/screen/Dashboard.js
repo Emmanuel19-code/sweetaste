@@ -64,10 +64,10 @@ const Dashboard = () => {
           </div>
           <div className="flex flex-row flex-1  ">
             {/*Order List */}
-            <div className="p-2 flex-1 m-1 bg-white overflow-y-scroll custom-scroll h-96  rounded-xl">
-              <div className="sticky top-0 bg-white ">
-                <h4 className="font-roboto font-medium">Order List</h4>
-                <div className="flex  flex-row items-center mt-1 p-1 rounded-md bg-gray-200">
+            <div className=" flex-1 m-1 bg-white overflow-y-auto custom-scroll  rounded-xl" style={{ maxHeight: "calc(100vh - 280px)" }}>
+              <div className="sticky top-0 bg-white p-2">
+                <h4 className="font-inter font-medium">Order List</h4>
+                <div className="flex flex-row items-center mt-1 p-1 rounded-md bg-gray-200">
                   <input
                     type="text"
                     placeholder="Search a Order"
@@ -77,18 +77,20 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="mt-2 ">
-                <OrderList status={"ready"} />
-                <OrderList status={"in_progress"} />
-                <OrderList status={"in_progress"} />
-                <OrderList status={"in_progress"} />
-                <OrderList status={"completed"} />
-                <OrderList status={"completed"} />
-                <OrderList status={"completed"} />
+              <div className="mt-2" >
+                <PaymentList />
+                <PaymentList />
+                <PaymentList />
+                <PaymentList />
+                <PaymentList />
+                <PaymentList />
+                <PaymentList />
+                <PaymentList />
+                <PaymentList />
               </div>
             </div>
             {/*Payment */}
-            <div className=" flex-1 m-1 bg-white overflow-y-auto custom-scroll h-96 rounded-xl">
+            <div className=" flex-1 m-1 bg-white overflow-y-auto custom-scroll  rounded-xl" style={{ maxHeight: "calc(100vh - 280px)" }}>
               <div className="sticky top-0 bg-white p-2">
                 <h4 className="font-roboto font-medium">Order List</h4>
                 <div className="flex flex-row items-center mt-1 p-1 rounded-md bg-gray-200">
@@ -101,7 +103,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="mt-2">
+              <div className="mt-2" >
                 <PaymentList />
                 <PaymentList />
                 <PaymentList />

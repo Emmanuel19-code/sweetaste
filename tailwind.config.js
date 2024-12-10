@@ -6,6 +6,10 @@ module.exports = {
       fontFamily: {
         nunito: ["Nunito"],
         roboto: ["Roboto"],
+        inter:['Inter']
+      },
+      fontSize: {
+        xxs: '10px',
       },
     },
   },
